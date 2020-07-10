@@ -94,7 +94,6 @@ header.navbar {
 /* Content */
 .content {
   margin: 2rem 7rem 2rem;
-  height: 80vh;
 }
 
 .content row {
@@ -172,7 +171,7 @@ header.navbar {
 .icons {
   margin: 0 12px;
 }
-.ant-btn-icon-only:hover {
+button.ant-btn.ant-btn-icon-only:hover {
   border-color: #5cb85c;
   background: #5cb85c;
   color: #fff;
@@ -214,6 +213,20 @@ header.navbar {
   font-family: source sans pro, sans-serif !important;
   font-size: 0.7rem;
 }
+.ant-list-vertical .ant-list-item-extra {
+  margin-left: 0;
+  width: 70%;
+}
+
+.ant-list-vertical .ant-list-item-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ant-space-item {
+  width: 10rem;
+  text-align: left;
+}
 
 .ant-list-lg .ant-list-item {
   padding: 1rem 0;
@@ -233,4 +246,56 @@ header.navbar {
 }
 .ant-space-item span:hover {
   font-weight: bold;
+}
+/* Article Favorite */
+.icons {
+  display: grid;
+  float: right;
+}
+.icons .ant-badge {
+  float: right;
+}
+
+.icons .content-tag {
+  width: 30rem;
+  float: right;
+  display: block;
+  margin-top: 5rem;
+}
+.favorite {
+  display: block;
+}
+
+.icons .content-tag span:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.ant-tag-lime {
+  border-radius: 12px;
+  margin-bottom: 5px;
+}
+
+.content-tag .ant-tag {
+  float: right;
+}
+/* Pagination */
+.paginate-wrapper {
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  float: none;
+}
+
+.ant-pagination {
+  text-align: center;
+}
+/* Footer */
+.footer {
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  background: rgb(238, 238, 238);
+  padding-top: 8px;
 }

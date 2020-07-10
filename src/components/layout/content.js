@@ -48,6 +48,7 @@ function Content() {
   //Handle Page Change
   const onPageChange = async (pagination, tag) => {
     setPagination(pagination);
+    window.scroll(0, 0);
     try {
       let pageUrl = articleUrl(
         10,
@@ -55,7 +56,7 @@ function Content() {
         tag.includes("Global Feed") ? "" : tag
       );
       const { data } = await axios.get(pageUrl);
-      console.log(pageUrl);
+      //console.log(pageUrl);
       //Clone new tab
       const newTabs = { ...tabs };
       //Go through each value check value == tag
@@ -65,7 +66,8 @@ function Content() {
       //add article content in data
       newTabs.data[articleIndex].content = data;
       setTabs(newTabs);
-      console.log(pagination);
+      //console.log(pagination);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -84,6 +86,26 @@ function Content() {
     }
   };
 
+  //Handle Tab Click
+  const onTagClick = async (tag) => {
+    setPagination(0);
+    try {
+      const { data } = await axios.get(articleUrl(10, 0, tag));
+      const newTabs = {
+        defaultTab: tag,
+        data: [tabs.data[0], { tag, content: data }],
+      };
+      setTabs(newTabs);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //Check null data
+  if (tabs.data === null) {
+    return <div> Loading...</div>;
+  }
+
   return (
     <div className="content">
       <Row gutter={16}>
@@ -91,7 +113,11 @@ function Content() {
           <Tabs activeKey={tabs.defaultTab} onChange={onTabChange}>
             {tabs.data.length &&
               tabs.data.map((data) => (
-                <TabPane tab={data.tag} key={data.tag}>
+                <TabPane
+                  tab={data.tag}
+                  key={data.tag}
+                  style={{ color: "green" }}
+                >
                   {data.content.articlesCount > 0 ? (
                     <Article
                       articles={data.content}
@@ -107,7 +133,7 @@ function Content() {
           </Tabs>
         </Col>
         <Col className="gutter-row" span={6}>
-          <Tags tagList={tagList} />
+          <Tags tagList={tagList} handleTagClick={onTagClick} />
         </Col>
       </Row>
     </div>
