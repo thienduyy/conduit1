@@ -5,10 +5,11 @@ import Tags from "../content/tag";
 import Article from "../content/article";
 import { useSelector, useDispatch } from "react-redux";
 import { articlePending, removeArticle } from "../../actions/article";
+import Banner from "./banner";
 
 const { TabPane } = Tabs;
 
-function Content() {
+function Home() {
   //Redux Article
   const article = useSelector((state) => state.article);
   const dispatch = useDispatch();
@@ -43,29 +44,32 @@ function Content() {
     return <div> Loading...</div>;
   }
   return (
-    <div className="content">
-      <Row gutter={16}>
-        <Col className="gutter-row" span={18}>
-          <Tabs activeKey={article.tabs.defaultTab} onChange={onTabChange}>
-            {article.tabs.data.length > 0 &&
-              article.tabs.data.map((data) => (
-                <TabPane key={data.tag} tab={data.tag}>
-                  <Article
-                    //key={index}
-                    articles={data.content}
-                    tag={data.tag}
-                    pagination={article.pagination}
-                    handlePageChange={onPageChange}
-                  />
-                </TabPane>
-              ))}
-          </Tabs>
-        </Col>
-        <Col className="gutter-row" span={6}>
-          <Tags />
-        </Col>
-      </Row>
-    </div>
+    <>
+      <Banner />
+      <div className="content">
+        <Row gutter={16}>
+          <Col className="gutter-row" span={18}>
+            <Tabs activeKey={article.tabs.defaultTab} onChange={onTabChange}>
+              {article.tabs.data.length > 0 &&
+                article.tabs.data.map((data) => (
+                  <TabPane key={data.tag} tab={data.tag}>
+                    <Article
+                      //key={index}
+                      articles={data.content}
+                      tag={data.tag}
+                      pagination={article.pagination}
+                      handlePageChange={onPageChange}
+                    />
+                  </TabPane>
+                ))}
+            </Tabs>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <Tags />
+          </Col>
+        </Row>
+      </div>
+    </>
   );
 }
-export default Content;
+export default Home;

@@ -64,6 +64,27 @@ header.navbar {
   font-weight: bolder;
   color: #5cb85c !important;
   cursor: pointer;
+  border-color: #5cb85c;
+}
+
+a {
+  font-family: source sans pro, sans-serif;
+  display: block;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+a:hover {
+  font-weight: bolder;
+  color: #5cb85c !important;
+  cursor: pointer;
+}
+
+.ant-pagination-item a:hover {
+  font-weight: bolder;
+  color: #5cb85c !important;
+  cursor: pointer;
 }
 
 /* Banner */
@@ -93,7 +114,7 @@ header.navbar {
 
 /* Content */
 .content {
-  margin: 2rem 7rem 2rem;
+  margin: 0.5rem 7rem 2rem;
 }
 
 .content row {
@@ -298,4 +319,56 @@ button.ant-btn.ant-btn-icon-only:hover {
   font-weight: 400;
   background: rgb(238, 238, 238);
   padding-top: 8px;
+}
+
+/* Sign In */
+.center-f-c {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+}
+
+.center-f-c .font-xl {
+  font-size: 40px;
+  font-family: source sans pro, sans-serif !important;
+}
+
+.center-f-c .font-sm {
+  color: #5cb85c;
+}
+
+.center-f-c .font-sm:hover {
+  text-decoration: underline;
+}
+
+.login-form {
+  text-align: center;
+  /* align-content: center; */
+}
+
+.ant-form-item-control-input-content {
+  max-width: 40%;
+  margin: auto;
+  max-height: 2.5rem;
+}
+
+.ant-input-affix-wrapper {
+  height: 6vh;
+  border-radius: 1rem;
+}
+
+.ant-btn-primary {
+  background: #5cb85c;
+  border-radius: 0.3rem;
+  max-height: 50%;
+}
+
+.ant-btn-primary:hover {
+  background: #1a961a;
+  border-color: #1a961a;
+}
+
+.ant-form-item-control-input-content button {
+  margin-left: 27.5rem;
+  height: 5vh;
 }

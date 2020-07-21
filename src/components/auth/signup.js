@@ -3,7 +3,7 @@ import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-function SignIn() {
+function SignUp() {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -22,6 +22,20 @@ function SignIn() {
         }}
         onFinish={onFinish}
       >
+        <Form.Item
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Username!",
+            },
+          ]}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Username"
+          />
+        </Form.Item>
         <Form.Item
           name="email"
           rules={[
@@ -66,4 +80,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
