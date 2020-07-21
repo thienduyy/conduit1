@@ -3,11 +3,12 @@ import { List, Avatar, Badge, Button, Space, Pagination, Tag } from "antd";
 import { HeartFilled } from "@ant-design/icons";
 
 function Article({ articles, tag, pagination, handlePageChange }) {
-  console.log(articles);
+  /* useEffect(() => {
+    console.log("1", articles);
+  }, [articles]); */
+  console.log("data", articles);
   return (
     <div className="article">
-      {/* <Tabs activeKey="Global Feed" onChange={handleTabChange}>
-        <TabPane tab={tag} key={tag}> */}
       <List
         itemLayout="vertical"
         size="large"
@@ -72,7 +73,7 @@ function Article({ articles, tag, pagination, handlePageChange }) {
           onChange={(pagination) => {
             handlePageChange(pagination, tag);
           }}
-          total={articles.articlesCount}
+          total={500}
         />
       </div>
       {/* </TabPane>
