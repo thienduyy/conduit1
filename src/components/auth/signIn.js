@@ -1,18 +1,31 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Alert } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginPending } from "../../actions/login";
 
 function SignIn() {
+  const dispatch = useDispatch();
+  const login = useSelector((state) => state.login);
+
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    // console.log("Received values of form: ", values);
+    dispatch(loginPending(values));
   };
+
+  if (login.isLogin) {
+    //console.log("Login Success", login.isLogin);
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
       <div className="center-f-c">
         <span className="font-xl">Sign In</span>
-        <Link className="font-sm">Need a account ?</Link>
+        <Link to="/signup" className="font-sm">
+          Need a account ?
+        </Link>
       </div>
       <Form
         name="normal_login"
@@ -51,12 +64,25 @@ function SignIn() {
             placeholder="Password"
           />
         </Form.Item>
+        {login.error ? (
+          <div className="error">
+            <Alert
+              message="Login Error"
+              description={login.error}
+              type="error"
+              showIcon
+            />
+          </div>
+        ) : (
+          ""
+        )}
 
         <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={login.isLoading}
           >
             Sign In
           </Button>

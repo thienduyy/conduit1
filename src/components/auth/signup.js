@@ -12,7 +12,9 @@ function SignUp() {
     <>
       <div className="center-f-c">
         <span className="font-xl">Sign In</span>
-        <Link className="font-sm">Need a account ?</Link>
+        <Link to="/signin" className="font-sm">
+          Have a account ?
+        </Link>
       </div>
       <Form
         name="normal_login"

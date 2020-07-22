@@ -53,8 +53,8 @@ const articleReducer = (state = initState, action) => {
       let cloneState = { ...state };
       console.log("2", cloneState);
       cloneState.pagination = 0;
-      let nameTag = cloneState.tabs.data.tag;
-      console.log("name", nameTag);
+      //let nameTag = cloneState.tabs.data.tag;
+      //console.log("name", nameTag);
       //question
       cloneState.tabs.data = cloneState.tabs.data.filter((value) =>
         value.tag.includes("Global Feed")

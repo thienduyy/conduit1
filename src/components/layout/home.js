@@ -12,6 +12,7 @@ const { TabPane } = Tabs;
 function Home() {
   //Redux Article
   const article = useSelector((state) => state.article);
+  const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,20 +50,40 @@ function Home() {
       <div className="content">
         <Row gutter={16}>
           <Col className="gutter-row" span={18}>
-            <Tabs activeKey={article.tabs.defaultTab} onChange={onTabChange}>
-              {article.tabs.data.length > 0 &&
-                article.tabs.data.map((data) => (
-                  <TabPane key={data.tag} tab={data.tag}>
-                    <Article
-                      //key={index}
-                      articles={data.content}
-                      tag={data.tag}
-                      pagination={article.pagination}
-                      handlePageChange={onPageChange}
-                    />
-                  </TabPane>
-                ))}
-            </Tabs>
+            {!login.isLogin ? (
+              <Tabs activeKey={article.tabs.defaultTab} onChange={onTabChange}>
+                {article.tabs.data.length > 0 &&
+                  article.tabs.data.map((data) => (
+                    <TabPane key={data.tag} tab={data.tag}>
+                      <Article
+                        //key={index}
+                        articles={data.content}
+                        tag={data.tag}
+                        pagination={article.pagination}
+                        handlePageChange={onPageChange}
+                      />
+                    </TabPane>
+                  ))}
+              </Tabs>
+            ) : (
+              <Tabs activeKey={article.tabs.defaultTab}>
+                <TabPane key="yourFeed" tab="Your Feed">
+                  No Article
+                </TabPane>
+                {article.tabs.data.length > 0 &&
+                  article.tabs.data.map((data) => (
+                    <TabPane key={data.tag} tab={data.tag}>
+                      <Article
+                        //key={index}
+                        articles={data.content}
+                        tag={data.tag}
+                        pagination={article.pagination}
+                        handlePageChange={onPageChange}
+                      />
+                    </TabPane>
+                  ))}
+              </Tabs>
+            )}
           </Col>
           <Col className="gutter-row" span={6}>
             <Tags />

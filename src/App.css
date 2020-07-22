@@ -47,7 +47,7 @@ header.navbar {
   display: flex;
   justify-content: space-around;
   list-style: none;
-  width: 250px;
+  width: 400px;
   margin-right: 7rem;
   padding-top: 0.5rem;
 }
